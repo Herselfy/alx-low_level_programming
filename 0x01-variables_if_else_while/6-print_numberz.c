@@ -1,17 +1,18 @@
 #include <stdio.h>
 
 /**
- *main - entry point
- *reversing the order of the alphabet
+ * main - Entry point
+ *
  *Return: Always 0 (Success)
  */
 
 int main(void)
 {
-char rv_alphabet;
-for (rv_alphabet = 'z'; rv_alphabet >= 'a'; rv_alphabet--)
+int i = 0;
+while (i <= 9)
 {
-putchar(rv_alphabet);
+putchar((i % 10) + '0');
+i++;
 }
 putchar('\n');
 return (0);
