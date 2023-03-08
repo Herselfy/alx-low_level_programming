@@ -1,17 +1,18 @@
 #include "main.h"
+
 /**
- * _puts_recursion - function like puts();
- * @s: input
- * Return: Always 0 (Success)
+ * _puts_recursion - return the strings in the variable s
+ * @s: print this strings recursively
+ * Return: return the strings in single pairs
  */
+
 void _puts_recursion(char *s)
 {
-        if (*s)
-        {
-                _putchar(*s);
-                _puts_recursion(s + 1);
-        }
-        else
-                _putchar('\n');
+	if (*s == '\0')
+		_putchar('\n');
+	else
+	{
+		_putchar(s[0]);
+		_puts_recursion(s + 1);
+	}
 }
-
