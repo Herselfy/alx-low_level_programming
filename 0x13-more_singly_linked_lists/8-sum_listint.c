@@ -1,23 +1,20 @@
 #include "lists.h"
 
 /**
- * get_nodeint_at_index - get the last element of the node
- *
- * @index: get the value at the index
- * @head: get the node
- * Return: the value at the index
+ * sum_listint - on call, sum the values in the nodes
+ * @head: get the values on the nodes
+ * Return: return the sum of all nodes
  */
 
-listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
+int sum_listint(listint_t *head)
 {
-	unsigned int count;
+	int sum = 0;
 
-	for (count = 0; count < index; count++)
+	while (head)
 	{
-		if (head == NULL)
-			return (NULL);
-
-		head =  head->next;
+		sum += head->n;
+		head = head->next;
 	}
-	return (head);
+
+	return (sum);
 }
