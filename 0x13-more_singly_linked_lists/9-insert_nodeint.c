@@ -1,31 +1,41 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - entry point to print the nodes
- * @head: the head node
- *Return: the nodes
+ * insert_nodeint_at_index - insert node at certain index
+ * @head: find the node point
+ * @idx: get the index of the node to be added
+ * @n: get the data to be inserted
+ * Return: the new value added
  */
 
-size_t print_listint_safe(const listint_t *head)
+listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-       	size_t i = 0;
-	int chk;
+	listint_t *new, *copy = *head;
+	unsigned int node;
 
-	while (head)
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+
+	new->n = n;
+
+	if (idx == 0)
 	{
-		chk = head - head->next;
-		i++;
-
-		printf("[%p] %d\n", (void *)&head, head->n);
-
-		if (chk > 0)
-			head = head->next;
-		else
-		{
-			printf("->[%p] %d\n", (void *)&head, head->n);
-			break;
-		}
+		new->next = copy;
+		*head = new;
+		return (new);
 	}
 
-	return (i);
+	for (node = 0; node < (idx - 1); node++)
+	{
+		if (copy == NULL || copy->next == NULL)
+			return (NULL);
+
+		copy = copy->next;
+	}
+
+	new->next = copy->next;
+	copy->next = new;
+
+	return (new);
 }
